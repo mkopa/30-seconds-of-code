@@ -456,6 +456,9 @@ _30s.average(1, 2, 3);
 * [`isBoolean`](#isboolean)
 * [`isEmpty`](#isempty)
 * [`isFunction`](#isfunction)
+* [`isAsyncFunction`](#isasyncfunction)
+* [`isGeneratorFunction`](#isgeneratorfunction)
+* [`isPlainFunction`](#isplainfunction)
 * [`isNil`](#isnil)
 * [`isNull`](#isnull)
 * [`isNumber`](#isnumber)
@@ -8776,6 +8779,78 @@ const isFunction = val => typeof val === 'function';
 ```js
 isFunction('x'); // false
 isFunction(x => x); // true
+```
+
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### isAsyncFunction
+
+Checks if the given argument is an async function.
+
+Use `Object.prototype.toString.call` to check if a value is classified as an async function.
+
+```js
+const isAsyncFunction = val => Object.prototype.toString.call(val) === '[object AsyncFunction]';
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+isAsyncFunction(async () => { })); // true
+isAsyncFunction(function* () { }); // false
+isAsyncFunction(x => x); // false
+isAsyncFunction('x'); // false
+```
+
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### isGeneratorFunction
+
+Checks if the given argument is a generator function.
+
+Use `Object.prototype.toString.call` to check if a value is classified as a generator function.
+
+```js
+const isGeneratorFunction = val => Object.prototype.toString.call(val) === '[object GeneratorFunction]';
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+isGeneratorFunction(function* () { }); // true
+isGeneratorFunction(async () => { })); // false
+isGeneratorFunction(x => x); // false
+isGeneratorFunction('x'); // false
+```
+
+</details>
+
+<br>[⬆ Back to top](#contents)
+
+### isPlainFunction
+
+Checks if the given argument is a plain function.
+
+Use `Object.prototype.toString.call` to check if a value is classified as a plain function.
+
+```js
+const isPlainFunction = val => Object.prototype.toString.call(val) === '[object Function]';
+```
+
+<details>
+<summary>Examples</summary>
+
+```js
+isPlainFunction(x => x); // true
+isPlainFunction(async () => { })); // false
+isPlainFunction(function* () { }); // false
+isPlainFunction('x'); // false
 ```
 
 </details>
