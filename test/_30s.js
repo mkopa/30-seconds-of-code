@@ -601,7 +601,7 @@ const isLowerCase = str => str === str.toLowerCase();
 const isNegativeZero = val => val === 0 && 1 / val === -Infinity;
 const isNil = val => val === undefined || val === null;
 const isNull = val => val === null;
-const isNumber = val => typeof val === 'number';
+const isNumber = val => typeof val === 'number' && val === val;
 const isObject = obj => obj === Object(obj);
 const isObjectLike = val => val !== null && typeof val === 'object';
 const isPlainObject = val => !!val && typeof val === 'object' && val.constructor === Object;
